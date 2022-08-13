@@ -1,15 +1,14 @@
-import { useNavigate  } from 'react-router-dom';
-import{useState} from "react";
-import { LOGIN_URL } from '../../../costants/endpoints';
-import Cookies from 'universal-cookie';
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { LOGIN_URL } from "../../../costants/endpoints";
+import Cookies from "universal-cookie";
 const LoginFormInput = () => {
-  const [username,setUsername]=useState<String>("");
-  const [password,setPassword] = useState<String>("")
+  const [username, setUsername] = useState<String>("");
+  const [password, setPassword] = useState<String>("");
   const navigate = useNavigate();
- const cookies = new Cookies();
+  const cookies = new Cookies();
 
-
-  const login = ()=>{
+  const login = () => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -20,19 +19,13 @@ const LoginFormInput = () => {
     };
     fetch(LOGIN_URL, requestOptions)
       .then((response) => response.json())
-      .then((data) =>{
-        cookies.set('user', data.token, { path: '/' });
-        if(data.isAdmin){
-          navigate('/Admin')
+      .then((data) => {
+        cookies.set("user", data.token, { path: "/" });
+        if (data.isAdmin) {
+          navigate("/Admin");
         }
       });
-
-     
-
-  }
-
-  
-
+  };
 
   return (
     <>
@@ -49,9 +42,9 @@ const LoginFormInput = () => {
       </div>
       <div className="mb-4">
         <input
-        onChange={(e: React.FormEvent<HTMLInputElement>) =>
-          setPassword(e.currentTarget.value)
-        }
+          onChange={(e: React.FormEvent<HTMLInputElement>) =>
+            setPassword(e.currentTarget.value)
+          }
           type="password"
           className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
           id="exampleFormControlInput1"
@@ -68,11 +61,11 @@ const LoginFormInput = () => {
             background:
               " linear-gradient( to right, #ee7724, #d8363a, #dd3675,  #b44593  )",
           }}
-          onClick={()=>login()}
+          onClick={() => login()}
         >
           Log in
         </button>
-        <a  onClick={()=>navigate('/ResetPassword')} className="text-gray-500" href="#!">
+        <a onClick={() => navigate("/ResetPassword")} className="text-gray-500">
           Forgot password?
         </a>
       </div>
@@ -83,12 +76,11 @@ const LoginFormInput = () => {
           className="inline-block px-6 py-2 border-2 border-red-600 text-red-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
           data-mdb-ripple="true"
           data-mdb-ripple-color="light"
-          onClick={()=>navigate('/Register')}
+          onClick={() => navigate("/Register")}
         >
           Create Account
         </button>
       </div>
-      
     </>
   );
 };

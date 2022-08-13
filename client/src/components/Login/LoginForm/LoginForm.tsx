@@ -17,7 +17,6 @@ const LoginForm = () => {
         <form>
           <p className="mb-4">Please login to your account</p>
           <LoginFormInput />
-         
         </form>
       </div>
     </>

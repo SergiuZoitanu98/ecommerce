@@ -5,6 +5,7 @@ import Cookies from "universal-cookie";
 const LoginFormInput = () => {
   const [username, setUsername] = useState<String>("");
   const [password, setPassword] = useState<String>("");
+  
   const navigate = useNavigate();
   const cookies = new Cookies();
 
@@ -65,9 +66,7 @@ const LoginFormInput = () => {
         >
           Log in
         </button>
-        <a onClick={() => navigate("/ResetPassword")} className="text-gray-500">
-          Forgot password?
-        </a>
+      
       </div>
       <div className="flex items-center justify-between pb-6">
         <p className="mb-0 mr-2">Don't have an account?</p>

@@ -14,10 +14,8 @@ const LoginForm = () => {
             We are The Lotus Team
           </h4>
         </div>
-        <form>
           <p className="mb-4">Please login to your account</p>
           <LoginFormInput />
-        </form>
       </div>
     </>
   );

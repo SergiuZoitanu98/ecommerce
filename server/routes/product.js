@@ -9,13 +9,13 @@ const router = require("express").Router();
 
 //CREATE product
 
-router.post("/", verifyTokenAndAdmin, async (req, res) => {
+router.post("/",  async (req, res) => {
   const newProduct = new Product(req.body);
   try {
     const savedProduct = await newProduct.save();
     res.status(200).json(savedProduct);
   } catch (error) {
-    return json(error);
+    return error
 
   }
 });
@@ -32,7 +32,7 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
     );
     res.status(200).json(updatedProduct);
   } catch (error) {
-    return json(error);
+    return error
 
   }
 });
@@ -43,7 +43,7 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
     await Product.findByIdAndDelete(req.params.id);
     res.status(200).json("Product has been deleted...");
   } catch (error) {
-    return json(error);
+    return error
 
   }
 });
@@ -55,7 +55,7 @@ router.get("/find/:id", async (req, res) => {
 
     res.status(200).json(product);
   } catch (error) {
-    return json(error);
+    return error
 
   }
 });

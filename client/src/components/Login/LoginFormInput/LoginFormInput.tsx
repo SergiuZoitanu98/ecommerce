@@ -24,6 +24,8 @@ const LoginFormInput = () => {
         cookies.set("user", data.token, { path: "/" });
         if (data.isAdmin) {
           navigate("/Admin");
+        }else{
+          navigate("/Products")
         }
       });
   };

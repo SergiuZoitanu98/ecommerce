@@ -15,11 +15,11 @@ router.post("/", verifyToken, async (req, res) => {
     const savedCart = await newCart.save();
     res.status(200).json(savedCart);
   } catch (error) {
-     res.status(500).json(error);
+    res.status(500).json(error);
   }
 });
 
-//         //update product
+////update product
 router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
   try {
     const updatedCart = await Cart.findByIdAndUpdate(
@@ -42,7 +42,6 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
     res.status(200).json("Cart has been deleted...");
   } catch (error) {
     return json(error);
-
   }
 });
 
@@ -54,7 +53,6 @@ router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
     res.status(200).json(cart);
   } catch (error) {
     return json(error);
-
   }
 });
 
@@ -65,7 +63,6 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
     res.status(200).json(carts);
   } catch (error) {
     return json(error);
-
   }
 });
 

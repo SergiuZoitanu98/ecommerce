@@ -2,7 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
-require('dotenv').config()
+require("dotenv").config();
 //REGISTER
 router.post("/register", async (req, res) => {
   const newUser = new User({
@@ -46,10 +46,9 @@ router.post("/login", async (req, res) => {
     );
 
     const { password, ...others } = user._doc;
-    res.status(200).json({ ...others,token:accessToken });
+    res.status(200).json({ ...others, token: accessToken });
   } catch (err) {
     return err;
-
   }
 });
 
